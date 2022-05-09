@@ -12,9 +12,6 @@ function Detail() {
 		setMoive(json.data.movie);
 		console.log(json.data.movie);
 	};
-	{
-		movie.genres.map(g => <li key={g}>{g}</li>);
-	}
 	useEffect(() => {
 		getMovie();
 	}, []);
@@ -28,10 +25,9 @@ function Detail() {
 				<div>
 					<h1 className={styles.movie__title}>{movie.title}</h1>
 					<h4 className={styles.moive__year}>{movie.year}</h4>
+
 					<ul className={styles.movie__genres}>
-						{movie.genres.map(v => (
-							<li key={v}>{v}</li>
-						))}
+						{movie.genres ? movie.genres.map((v, index) => <li key={index}>{v}</li>) : ''}
 					</ul>
 					<p>{movie.description_full}</p>
 				</div>
